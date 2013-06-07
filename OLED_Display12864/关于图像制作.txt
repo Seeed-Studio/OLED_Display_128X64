@@ -1,0 +1,1 @@
+you can also refer to the GROVE- OLED Display 96x96 to learn how to make 128x64 images to show on this module. 
