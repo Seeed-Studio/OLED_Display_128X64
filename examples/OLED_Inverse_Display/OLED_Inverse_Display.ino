@@ -6,8 +6,6 @@ void setup()
 {
   Wire.begin();	
   SeeedOled.init();  //initialze SEEED OLED display
-  DDRB|=0x21;        
-  PORTB |= 0x21;
 
   SeeedOled.clearDisplay();          //clear the screen and set start position to top left corner
   SeeedOled.setNormalDisplay();      //Set display to normal mode (i.e non-inverse mode)
