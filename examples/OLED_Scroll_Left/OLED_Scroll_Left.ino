@@ -2,7 +2,7 @@
 #include <SeeedOLED.h>
 #include <avr/pgmspace.h>
 
-static unsigned char SeeedLogo[] PROGMEM ={
+static const unsigned char SeeedLogo[] PROGMEM ={
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -75,7 +75,7 @@ void setup()
   SeeedOled.init();  //initialze SEEED OLED display
 
   SeeedOled.clearDisplay();               // clear the screen and set start position to top left corner
-  SeeedOled.drawBitmap(SeeedLogo,1024);   // 1024 = 128 Pixels * 64 Pixels / 8
+  SeeedOled.drawBitmap((unsigned char*) SeeedLogo,1024);   // 1024 = 128 Pixels * 64 Pixels / 8
   SeeedOled.setHorizontalScrollProperties(Scroll_Left,4,7,Scroll_5Frames);  //Set the properties of Horizontal Scrool
   SeeedOled.activateScroll();             // Activate Scroll
 
