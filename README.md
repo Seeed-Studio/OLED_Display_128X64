@@ -1,5 +1,5 @@
-##OLED_Display_128X64
-![image](http://www.seeedstudio.com/wiki/images/e/ea/Toled128642.jpg)
+## OLED_Display_128X64
+![image](https://raw.githubusercontent.com/SeeedDocument/Grove_OLED_Display_0.96/master/images/Grove-OLED-0.96.png)
 
 LED 128×64 Display module is an OLED monochrome 128×64dot matrix display module with Grove 4pin I2C Interface.Comparing to LCD, OLED screens are way more competitive, which has a number of advantages such as high brightness, self-emission, high contrast ratio, slim / thin outline, wide viewing angle, wide temperature range, and low power consumption. It has bigger screen so that it can display more contents than the OLED 96×96. 
 
