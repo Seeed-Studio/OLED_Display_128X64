@@ -93,14 +93,12 @@ unsigned char putFloat(float floatNumber,unsigned char decimal);
 unsigned char putFloat(float floatNumber);
 void drawBitmap(unsigned char *bitmaparray,int bytes);
 
-void setHorizontalScrollProperties(bool direction,unsigned char startPage, unsigned char endPage, unsigned char scrollSpeed);
+void setHorizontalScrollProperties(unsigned char direction, unsigned char startPage, unsigned char endPage, unsigned char scrollSpeed);
 void activateScroll();
 void deactivateScroll();
 
 };
 
-extern SeeedOLED SeeedOled;  // SeeedOLED object 
+extern SeeedOLED SeeedOled;  // SeeedOLED object
 
 #endif
-
-
