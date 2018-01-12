@@ -25,11 +25,7 @@
 #include "Wire.h"
 #include "SeeedOLED.h"
 
-#if (defined(__AVR__))
-#include <avr\pgmspace.h>
-#else
-#include <pgmspace.h>
-#endif
+#include <avr/pgmspace.h>
 
 // 8x8 Font ASCII 32 - 127 Implemented
 // Users can modify this to support more characters(glyphs)
