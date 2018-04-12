@@ -25,8 +25,8 @@
 #include "Wire.h"
 #include "SeeedOLED.h"
 
-#if (defined(__AVR__))
-#include <avr\pgmspace.h>
+#if (defined(__AVR__) || defined(__SAMD21G18A__))
+#include <avr/pgmspace.h>
 #else
 #include <pgmspace.h>
 #endif
