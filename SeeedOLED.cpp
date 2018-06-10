@@ -25,7 +25,7 @@
 #include "Wire.h"
 #include "SeeedOLED.h"
 
-#if (defined(__AVR__) || defined(__SAMD21G18A__))
+#if (defined(__AVR__) || defined(__SAMD21G18A__) || defined(ARDUINO_ARCH_ARC32))
 #include <avr/pgmspace.h>
 #else
 #include <pgmspace.h>
