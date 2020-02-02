@@ -1,26 +1,26 @@
 /*
- * SeeedOLED.h
- * SSD130x OLED Driver Library
- *
- * Copyright (c) 2011 seeed technology inc.
- * Author        :   Visweswara R
- * Create Time   :   Dec 2011
- * Change Log    :
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- */
+    SeeedOLED.h
+    SSD130x OLED Driver Library
+
+    Copyright (c) 2011 seeed technology inc.
+    Author        :   Visweswara R
+    Create Time   :   Dec 2011
+    Change Log    :
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 
 #ifndef SeeedOLED_data_H
 #define SeeedOLED_data_H
@@ -28,10 +28,10 @@
 // SeeedOLED Instruction set addresses
 
 #if defined(ARDUINO) && ARDUINO >= 100
-#include "Arduino.h"
+    #include "Arduino.h"
 #else
-#include <WProgram.h>
-#include "Wire.h"
+    #include <WProgram.h>
+    #include "Wire.h"
 #endif
 
 #define SeeedOLED_Max_X                 127 //128 Pixels
@@ -67,35 +67,36 @@
 
 class SeeedOLED {
 
-public:
+  public:
 
-char addressingMode;
+    char addressingMode;
 
 
-void init(void);
+    void init(void);
 
-void setNormalDisplay();
-void setInverseDisplay();
+    void setNormalDisplay();
+    void setInverseDisplay();
 
-void sendCommand(unsigned char command);
-void sendData(unsigned char Data);
+    void sendCommand(unsigned char command);
+    void sendData(unsigned char Data);
 
-void setPageMode();
-void setHorizontalMode();
+    void setPageMode();
+    void setHorizontalMode();
 
-void setTextXY(unsigned char Row, unsigned char Column);
-void clearDisplay();
-void setBrightness(unsigned char Brightness);
-void putChar(unsigned char c);
-void putString(const char *String);
-unsigned char putNumber(long n);
-unsigned char putFloat(float floatNumber,unsigned char decimal);
-unsigned char putFloat(float floatNumber);
-void drawBitmap(unsigned char *bitmaparray,int bytes);
+    void setTextXY(unsigned char Row, unsigned char Column);
+    void clearDisplay();
+    void setBrightness(unsigned char Brightness);
+    void putChar(unsigned char c);
+    void putString(const char* String);
+    unsigned char putNumber(long n);
+    unsigned char putFloat(float floatNumber, unsigned char decimal);
+    unsigned char putFloat(float floatNumber);
+    void drawBitmap(unsigned char* bitmaparray, int bytes);
 
-void setHorizontalScrollProperties(unsigned char direction, unsigned char startPage, unsigned char endPage, unsigned char scrollSpeed);
-void activateScroll();
-void deactivateScroll();
+    void setHorizontalScrollProperties(unsigned char direction, unsigned char startPage, unsigned char endPage,
+                                       unsigned char scrollSpeed);
+    void activateScroll();
+    void deactivateScroll();
 
 };
 
