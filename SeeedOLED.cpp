@@ -135,6 +135,10 @@ const unsigned char BasicFont[][8] PROGMEM = {
     {0x00, 0x02, 0x05, 0x05, 0x02, 0x00, 0x00, 0x00}
 };
 
+static unsigned char textRow = 0, textColumn = 0, textSize = 1;
+static unsigned char doubleBits[16]= {
+	0x0, 0x3, 0xf, 0xf, 0x30,  0x33, 0x3c, 0x3f,  0xc0, 0xc3, 0xcc, 0xcf, 0xf0, 0xf3, 0xfc, 0xff};
+
 void SeeedOLED::init(void) {
     sendCommand(SeeedOLED_Display_Off_Cmd);     //display off
     delay(5);
@@ -207,14 +211,44 @@ void SeeedOLED::sendData(unsigned char Data) {
     Wire.endTransmission();                    // stop I2C transmission
 }
 
+ void SeeedOLED::setTextSize(unsigned char Size) {
+ 	if(Size < 1)
+ 		textSize = 1;
+ 	else if (Size > 2)
+ 		textSize = 2;
+ 	else
+ 		textSize = Size;
+ }
+ 
 void SeeedOLED::putChar(unsigned char C) {
     if (C < 32 || C > 127) { //Ignore non-printable ASCII characters. This can be modified for multilingual font.
         C = ' '; //Space
     }
-    unsigned char i = 0;
-    for (i = 0; i < 8; i++) {
-        //read bytes from code memory
-        sendData(pgm_read_byte(&BasicFont[C - 32][i])); //font array starts at 0, ASCII starts at 32. Hence the translation
+    if(textSize == 1) {
+		unsigned char i = 0;
+		for (i = 0; i < 8; i++) {
+			//read bytes from code memory
+			sendData(pgm_read_byte(&BasicFont[C - 32][i])); //font array starts at 0, ASCII starts at 32. Hence the translation
+		}
+		textColumn++;
+    } else if (textSize == 2) {
+    	unsigned char currentRow = textRow;
+    	unsigned char i, bits;
+    	
+    	// draw the upper half 
+    	for (i = 0; i < 8; i++) {
+			bits = doubleBits[pgm_read_byte(&BasicFont[C - 32][i]) & 0xf];
+			sendData(bits);
+			sendData(bits);
+		}
+		// draw the lower half 
+		setTextXY(textRow+1, textColumn);
+		for (i = 0; i < 8; i++) {
+			bits = doubleBits[(pgm_read_byte(&BasicFont[C - 32][i]) >> 4) & 0xf];
+			sendData(bits);
+			sendData(bits);
+		}
+		setTextXY(currentRow, textColumn+2);
     }
 }
 

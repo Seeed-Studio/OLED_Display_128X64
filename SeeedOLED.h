@@ -86,6 +86,7 @@ class SeeedOLED {
     void setTextXY(unsigned char Row, unsigned char Column);
     void clearDisplay();
     void setBrightness(unsigned char Brightness);
+    void setTextSize(unsigned char Size);
     void putChar(unsigned char c);
     void putString(const char* String);
     unsigned char putNumber(long n);
